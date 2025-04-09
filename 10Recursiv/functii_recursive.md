@@ -49,27 +49,32 @@ void recursiv(int i)
 ```
 > observam ca apelul se face cu o alta valoare pentru a evita buclele infinite
 ## Algoritmi 
-
+Algoritm de minim recursiv
+```cpp
+int Min(int i)
+{
+  if(i<n)
+  {
+    if(a[i]<Min(i+1))
+    return a[i];
+    else 
+    return Min(i+1);
+  }
+  return 100;
+}
+```
 Algoritm de maxim recursiv
 ```cpp
-#include<iostream>
-using namespace std; 
-int a[4]={4,3,2,1};
-int n=4;
-void Maxim(int i, int &maxim){
- if(i>=0){
-    if(a[i]>maxim){
-      maxim=a[i];
-    }
-    i--;
-    Maxim(i,maxim);
-  } 
-}
-int main(){
-  int maxim=0;
-  Maxim(n,maxim);
-  cout<<maxim;
-  return 0;
+int Max(int i)
+{
+  if(i<n)
+  {
+    if(a[i]>Max(i+1))
+    return a[i];
+    else 
+    return Max(i+1);
+  }
+  return -100;
 }
 ```
 
@@ -394,41 +399,43 @@ int main(){
 Problema 9 Sa se stearga valoarile minime
 ```cpp
 #include<iostream>
-using namespace std; 
-int a[10]={23,23,23,4,3,5,2,23,5};
-int n=9;
-void Min(int i, int &minim){
-  if(i<0){
-    return;
+using namespace std;
+int a[100]={4,4,2,6,8};
+int n=5;
+int Min(int i)
+{
+  if(i<n)
+  {
+    if(a[i]<Min(i+1))
+    return a[i];
+    else 
+    return Min(i+1);
   }
-  else{
-   if(a[i]<minim){
-      minim=a[i];
-    } 
-    Min(i-1,minim);
-  }
+  return 100;
 }
-void Del(int a[], int &n, int i){
-  if(i==n-1){
+void Del(int i, int a[], int &n)
+{
+  if(i==n-1)
+  {
     n--;
-    return;
   }
-  if(i<n){
-    a[i]=a[i+1];
-    Del(a,n,i+1);
+  if(i<n)
+  {
+a[i]=a[i+1];
+Del(i+1,a,n);
   }
-
 }
 int main(){
-  int minim=100;
-  Min(n-1,minim);
-  cout<<minim;
-  for(int i=0;i<n;i++){
-    if(a[i]==minim){
-      Del(a,n,i);
+  int minim=Min(0);
+  for(int i=0;i<n;i++)
+  {
+    if(a[i]==minim)
+    {
+      Del(i,a,n);
     }
   }
-  for(int i=0;i<n;i++){
+  for(int i=0;i<n;i++)
+  {
     cout<<a[i]<<" ";
   }
   return 0;

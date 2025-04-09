@@ -317,51 +317,94 @@
 //   cout<<Pal(44,invers);
 //   return 0;
 // }
-#include <iostream>
-using namespace std;
-//inlocuieste nr de frecventa maxima cu suma primelor doua cifre
-int a[100]={23,23,23,3,2,4};
-int n=6;
-int Sc(int n)
-{
-  if(n<100)
-  {
-    return n/10+n%10;
-  }
-  return Sc(n/10);
-}
-int Ap(int x, int i)
-{
-if(i<n)
-{
-  if(x==a[i])
+
+// #include <iostream>
+// using namespace std;
+// //inlocuieste nr de frecventa maxima cu suma primelor doua cifre
+// int a[100]={23,23,23,3,2,4};
+// int n=6;
+// int Sc(int n)
+// {
+//   if(n<100)
+//   {
+//     return n/10+n%10;
+//   }
+//   return Sc(n/10);
+// }
+// int Ap(int x, int i)
+// {
+// if(i<n)
+// {
+//   if(x==a[i])
   
- return 1+ Ap(x,i+1);
- else{
-  return Ap(x,i+1);
- }
-}
-return 0;
-}
-void Max(int i, int &x)
+//  return 1+ Ap(x,i+1);
+//  else{
+//   return Ap(x,i+1);
+//  }
+// }
+// return 0;
+// }
+// void Max(int i, int &x)
+// {
+//   if(i<n-1)
+//   {
+//     if(Ap(a[i],0)>Ap(a[i+1],0))
+//     {
+// x=a[i];
+//     }
+//     Max(i+1,x);
+//   }
+// }
+// int main(){
+//   int x=0;
+//   Max(0,x);
+//   for(int i=0;i<n;i++)
+//   {
+//     if(a[i]==x)
+//     {
+//       a[i]=Sc(x);
+//     }
+//   }
+//   for(int i=0;i<n;i++)
+//   {
+//     cout<<a[i]<<" ";
+//   }
+//   return 0;
+// }
+#include<iostream>
+using namespace std;
+int a[100]={4,4,2,6,8};
+int n=5;
+int Min(int i)
 {
-  if(i<n-1)
+  if(i<n)
   {
-    if(Ap(a[i],0)>Ap(a[i+1],0))
-    {
-x=a[i];
-    }
-    Max(i+1,x);
+    if(a[i]<Min(i+1))
+    return a[i];
+    else 
+    return Min(i+1);
+  }
+  return 100;
+}
+void Del(int i, int a[], int &n)
+{
+  if(i==n-1)
+  {
+    n--;
+  }
+  if(i<n)
+  {
+a[i]=a[i+1];
+Del(i+1,a,n);
   }
 }
 int main(){
-  int x=0;
-  Max(0,x);
+  int minim=Min(0);
   for(int i=0;i<n;i++)
   {
-    if(a[i]==x)
+    if(a[i]==minim)
     {
-      a[i]=Sc(x);
+      Del(i,a,n);
     }
   }
   for(int i=0;i<n;i++)
