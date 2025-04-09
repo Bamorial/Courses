@@ -297,7 +297,7 @@ Cel mai aproiat palindrom (7.)
 ```cpp
 #include<iostream>
 using namespace std; 
-int Invers(int n, int invers=0){
+int Invers(int n, int &invers){
   if(n==0){
     return invers;
   }
@@ -337,45 +337,55 @@ int main(){
 ```
 Problema 8 (Inlocuieste nr de frecventa maxima cu suma primelor doua cifre)
 ```cpp
-#include<iostream>
-using namespace std; 
-int a[10]={23,23,23,4,3,5,2,23,5};
-int n=9;
-int Sc(int x){
-  if(x<10) return x;
-  if(x<100) return x/10+x%10;
-  return Sc(x/10);
+#include <iostream>
+using namespace std;
+//inlocuieste nr de frecventa maxima cu suma primelor doua cifre
+int a[100]={23,23,23,3,2,4};
+int n=6;
+int Sc(int n)
+{
+  if(n<100)
+  {
+    return n/10+n%10;
+  }
+  return Sc(n/10);
 }
-int Ap(int x, int i){
-  if(i>=n){
-    return 0;
-  }
-  if(a[i]==x){
-    return 1+Ap(x,i+1);
-  }
-  else
+int Ap(int x, int i)
+{
+if(i<n)
+{
+  if(x==a[i])
+  
+ return 1+ Ap(x,i+1);
+ else{
   return Ap(x,i+1);
+ }
 }
-void Max(int i, int& maxim, int& maxCount) {
-  if (i < 0) return;
-  int contor = Ap(a[i], 0);
-  if (contor > maxCount) {
-    maxCount = contor;
-    maxim = a[i];
+return 0;
+}
+void Max(int i, int &x)
+{
+  if(i<n-1)
+  {
+    if(Ap(a[i],0)>Ap(a[i+1],0))
+    {
+x=a[i];
+    }
+    Max(i+1,x);
   }
-
-  Max(i - 1, maxim, maxCount);
 }
 int main(){
-  int maxim=0;
-  int maxCount=0;
-  Max(n-1,maxim,maxCount);
-  for(int i=0;i<n;i++){
-    if(a[i]==maxim){
-      a[i]=Sc(a[i]);
+  int x=0;
+  Max(0,x);
+  for(int i=0;i<n;i++)
+  {
+    if(a[i]==x)
+    {
+      a[i]=Sc(x);
     }
   }
-  for(int i=0;i<n;i++){
+  for(int i=0;i<n;i++)
+  {
     cout<<a[i]<<" ";
   }
   return 0;

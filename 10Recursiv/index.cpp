@@ -228,42 +228,144 @@
 //   }
 //   return 0;
 // }
-#include<iostream>
-using namespace std; 
-int a[10]={23,23,23,4,3,5,2,23,5};
-int n=9;
-void Min(int i, int &minim){
-  if(i<0){
-    return;
-  }
-  else{
-   if(a[i]<minim){
-      minim=a[i];
-    } 
-    Min(i-1,minim);
-  }
-}
-void Del(int a[], int &n, int i){
-  if(i==n-1){
-    n--;
-    return;
-  }
-  if(i<n){
-    a[i]=a[i+1];
-    Del(a,n,i+1);
-  }
+// #include<iostream>
+// using namespace std; 
+// int a[10]={23,23,23,4,3,5,2,23,5};
+// int n=9;
+// void Min(int i, int &minim){
+//   if(i<0){
+//     return;
+//   }
+//   else{
+//    if(a[i]<minim){
+//       minim=a[i];
+//     } 
+//     Min(i-1,minim);
+//   }
+// }
+// void Del(int a[], int &n, int i){
+//   if(i==n-1){
+//     n--;
+//     return;
+//   }
+//   if(i<n){
+//     a[i]=a[i+1];
+//     Del(a,n,i+1);
+//   }
 
+// }
+// int main(){
+//   int minim=100;
+//   Min(n-1,minim);
+//   cout<<minim;
+//   for(int i=0;i<n;i++){
+//     if(a[i]==minim){
+//       Del(a,n,i);
+//     }
+//   }
+//   for(int i=0;i<n;i++){
+//     cout<<a[i]<<" ";
+//   }
+//   return 0;
+// }
+
+
+// #include<iostream>
+// using namespace std; 
+// int Pal (int x, int &z)
+// {
+//   if(x<10)
+//   {
+//     if(z==-1)
+//     {
+//       z=x;
+//     }
+//     else
+//     {
+//       z=z+x*10;
+//     }
+//   }
+//   if(x<100)
+//   {
+//     if(z==-1)
+//     {
+//       z=x%10*10+x/10;
+//       return x==z;
+//     }
+//     else
+//     {
+//       z=z+x%10*100+x/10%10*10;
+//       return x%10==x/10;
+//     }
+//   }
+//   if(x<1000)
+//   {
+//     if(x%10==x/100)
+//     {
+//       z= x%10*100+x%10;
+//     return Pal(x/10%10, z);
+//     }
+//     else
+//     {
+//       return 0;
+//     }
+//   }
+//   return 0;
+// }
+// int main(){
+//   int invers=-1;
+//   cout<<Pal(44,invers);
+//   return 0;
+// }
+#include <iostream>
+using namespace std;
+//inlocuieste nr de frecventa maxima cu suma primelor doua cifre
+int a[100]={23,23,23,3,2,4};
+int n=6;
+int Sc(int n)
+{
+  if(n<100)
+  {
+    return n/10+n%10;
+  }
+  return Sc(n/10);
+}
+int Ap(int x, int i)
+{
+if(i<n)
+{
+  if(x==a[i])
+  
+ return 1+ Ap(x,i+1);
+ else{
+  return Ap(x,i+1);
+ }
+}
+return 0;
+}
+void Max(int i, int &x)
+{
+  if(i<n-1)
+  {
+    if(Ap(a[i],0)>Ap(a[i+1],0))
+    {
+x=a[i];
+    }
+    Max(i+1,x);
+  }
 }
 int main(){
-  int minim=100;
-  Min(n-1,minim);
-  cout<<minim;
-  for(int i=0;i<n;i++){
-    if(a[i]==minim){
-      Del(a,n,i);
+  int x=0;
+  Max(0,x);
+  for(int i=0;i<n;i++)
+  {
+    if(a[i]==x)
+    {
+      a[i]=Sc(x);
     }
   }
-  for(int i=0;i<n;i++){
+  for(int i=0;i<n;i++)
+  {
     cout<<a[i]<<" ";
   }
   return 0;
