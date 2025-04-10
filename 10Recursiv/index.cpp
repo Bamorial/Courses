@@ -481,34 +481,131 @@
 // }
 
 
+// #include<iostream>
+// using namespace std;
+// int a[3][3]={{4,4,4},{2,3,1},{4,4,4}};
+// int n=3;
+// int Ok(int i, int div=2){
+//   if (i <= 1) return false;
+//     if (div * div > i) return true;
+//     if (i % div == 0) return false;
+//     return Ok(i, div + 1);
+// }
+// int interschimba(int &c, int &b){
+//   int aux=c;
+//   c=b;
+//   b=aux;
+// }
+// void Inv(int i, int l){
+//   if(i<n/2){
+//     interschimba(a[l][i],a[l][n-1-i]);
+//     Inv(i+1,l);
+//   }
+// }
+// int main(){
+//   Inv(0,1);
+//   for(int i=0;i<n;i++){
+//     for(int j=0;j<n;j++){
+//       cout<<a[i][j]<<" ";
+//     }
+//     cout<<endl;
+//   }
+//   return 0;
+// }
+// #include<iostream>
+// using namespace std;
+// int Pal(int x)
+// {
+//   if(x<0)
+//   return 0;
+//   if(x<10)
+//   return 1;
+//   if(x<100)
+//   {
+//     return x/10==x%10;
+//   }
+//   if(x<1000)
+//   {
+//     int primaCifra=x/100;
+//     int ultimaCifra=x%10;
+//     if(primaCifra!=ultimaCifra)
+//     {
+//       return 0;
+//     }
+//     else
+//     {
+//       return Pal(x/10%10);
+//     }
+//     return 0;
+//   }
+//   return 0;
+// }
+// int Search(int x, int t)
+// {
+//   if(!Pal(x))
+//   {
+//     return Search(x+t,t);
+//   }
+//   else
+//   {
+//     return x;
+//   }
+// }
+// int main(){
+//   int a[50]={101,44,504,404,74,56};
+//   int n=6;
+//   for(int i=0;i<n;i++)
+//   {
+//     a[i]=Search(a[i],1);
+//   }
+//   for(int i=0;i<n;i++)
+//   {
+//     cout<<a[i]<<" ";
+//   }
+//   return 0;
+// }
 #include<iostream>
 using namespace std;
-int a[3][3]={{4,4,4},{2,3,1},{4,4,4}};
+int a[50][50]={{4,4,4},{1,2,3},{2,4,4}};
 int n=3;
-int Ok(int i, int div=2){
-  if (i <= 1) return false;
-    if (div * div > i) return true;
-    if (i % div == 0) return false;
-    return Ok(i, div + 1);
+int Prim(int i, int div=2)
+{
+  if(i==0)
+  return 0;
+  if(div>i/2)
+  return 1;
+  if(i%div==0)
+  return 0;
+  else
+  return Prim(i,div+1);
 }
-int interschimba(int &c, int &b){
-  int aux=c;
-  c=b;
-  b=aux;
+void interschimbare(int &c, int &b)
+{
+int aux=c;
+c=b;
+b=aux;
 }
-void Inv(int i, int l){
-  if(i<n/2){
-    interschimba(a[l][i],a[l][n-1-i]);
-    Inv(i+1,l);
-  }
+void Inv (int i, int l)
+{
+if(i<n/2)
+{
+  interschimbare(a[l][i],a[l][n-i-1]);
+  Inv(i+1,l);
+}
 }
 int main(){
-  Inv(0,1);
-  for(int i=0;i<n;i++){
-    for(int j=0;j<n;j++){
-      cout<<a[i][j]<<" ";
-    }
-    cout<<endl;
+for(int i=0;i<n;i++)
+{
+  if(Prim(a[i][0]))
+  Inv(0,i);
+}
+for(int i=0;i<n;i++)
+{
+  for(int j=0;j<n;j++)
+  {
+    cout<<a[i][j]<<" ";
   }
+  cout<<endl;
+}
   return 0;
 }

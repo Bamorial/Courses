@@ -535,4 +535,51 @@ int main(){
   return 0;
 }
 ```
-
+18. Sa se inverseze liniile care incep cu un element prim
+```cpp
+#include<iostream>
+using namespace std;
+int a[50][50]={{4,4,4},{1,2,3},{2,4,4}};
+int n=3;
+int Prim(int i, int div=2)
+{
+  if(i==0)
+  return 0;
+  if(div>i/2)
+  return 1;
+  if(i%div==0)
+  return 0;
+  else
+  return Prim(i,div+1);
+}
+void interschimbare(int &c, int &b)
+{
+int aux=c;
+c=b;
+b=aux;
+}
+void Inv (int i, int l)
+{
+if(i<n/2)
+{
+  interschimbare(a[l][i],a[l][n-i-1]);
+  Inv(i+1,l);
+}
+}
+int main(){
+for(int i=0;i<n;i++)
+{
+  if(Prim(a[i][0]))
+  Inv(0,i);
+}
+for(int i=0;i<n;i++)
+{
+  for(int j=0;j<n;j++)
+  {
+    cout<<a[i][j]<<" ";
+  }
+  cout<<endl;
+}
+  return 0;
+}
+```
