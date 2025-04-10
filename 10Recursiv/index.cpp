@@ -413,3 +413,70 @@
 //   }
 //   return 0;
 // }
+// #include<iostream>
+// using namespace std;
+// int a[10]={1,2,3};
+// int n=3;
+// int Nr(int i, int t){
+//   if(i<n && i>=0){
+//     return Nr(i+t, t)*10+a[i];
+//   } 
+//   return 0;
+// }
+// int Cub(int i, int x ){
+//   if(i*i*i<=x){
+//     if(i*i*i==x){
+//       return 1;
+//     } 
+//     else{
+//       return Cub(i+1,x);
+//     }
+//   }
+//   else return 0;
+// }
+// int main(){
+//   int number1= Nr(0,1);
+//   int number2= Nr(n-1, -1);
+//   if(Cub(1,number1)){
+//     cout<<number1<<" este cub";
+//   }
+//   else{
+//     cout<<number1<<" nu este cub";
+//   }
+//   cout<<endl;
+//   if(Cub(1,number2)){
+//     cout<<number2<<" este cub";
+//   }
+//   else{
+//     cout<<number2<<" nu este cub";
+//   }
+//   return 0;
+// }
+#include<iostream>
+using namespace std;
+int v[4]={1,2,3,4};
+int m=4;
+int n=2;
+int El(int t){
+  return v[t]; 
+}
+void M(int i, int j, int a[3][3]){
+  if(i<n && j<n ){
+    a[i][j]=El(i*n+j);
+    M(i,j+1, a);
+    j=0;
+    M(i+1,j,a);
+  }
+}
+int main(){
+  int a[3][3];
+  M(0,0,a); 
+  for(int i=0;i<n;i++){
+    for(int j=0;j<n;j++){
+      cout<<a[i][j]<<" ";
+    }
+    cout<<endl;
+  }
+  return 0;
+}
+
