@@ -452,25 +452,58 @@
 //   }
 //   return 0;
 // }
+// #include<iostream>
+// using namespace std;
+// int v[4]={1,2,3,4};
+// int m=4;
+// int n=2;
+// int El(int t){
+//   return v[t]; 
+// }
+// void M(int i, int j, int a[3][3]){
+//   if(i<n && j<n ){
+//     a[i][j]=El(i*n+j);
+//     M(i,j+1, a);
+//     j=0;
+//     M(i+1,j,a);
+//   }
+// }
+// int main(){
+//   int a[3][3];
+//   M(0,0,a); 
+//   for(int i=0;i<n;i++){
+//     for(int j=0;j<n;j++){
+//       cout<<a[i][j]<<" ";
+//     }
+//     cout<<endl;
+//   }
+//   return 0;
+// }
+
+
 #include<iostream>
 using namespace std;
-int v[4]={1,2,3,4};
-int m=4;
-int n=2;
-int El(int t){
-  return v[t]; 
+int a[3][3]={{4,4,4},{2,3,1},{4,4,4}};
+int n=3;
+int Ok(int i, int div=2){
+  if (i <= 1) return false;
+    if (div * div > i) return true;
+    if (i % div == 0) return false;
+    return Ok(i, div + 1);
 }
-void M(int i, int j, int a[3][3]){
-  if(i<n && j<n ){
-    a[i][j]=El(i*n+j);
-    M(i,j+1, a);
-    j=0;
-    M(i+1,j,a);
+int interschimba(int &c, int &b){
+  int aux=c;
+  c=b;
+  b=aux;
+}
+void Inv(int i, int l){
+  if(i<n/2){
+    interschimba(a[l][i],a[l][n-1-i]);
+    Inv(i+1,l);
   }
 }
 int main(){
-  int a[3][3];
-  M(0,0,a); 
+  Inv(0,1);
   for(int i=0;i<n;i++){
     for(int j=0;j<n;j++){
       cout<<a[i][j]<<" ";
@@ -479,4 +512,3 @@ int main(){
   }
   return 0;
 }
-
