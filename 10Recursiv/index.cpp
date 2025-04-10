@@ -371,45 +371,120 @@
 //   }
 //   return 0;
 // }
+// #include<iostream>
+// using namespace std;
+// int a[100]={4,4,2,6,8};
+// int n=5;
+// int Min(int i)
+// {
+//   if(i<n)
+//   {
+//     if(a[i]<Min(i+1))
+//     return a[i];
+//     else 
+//     return Min(i+1);
+//   }
+//   return 100;
+// }
+// void Del(int i, int a[], int &n)
+// {
+//   if(i==n-1)
+//   {
+//     n--;
+//   }
+//   if(i<n)
+//   {
+// a[i]=a[i+1];
+// Del(i+1,a,n);
+//   }
+// }
+// int main(){
+//   int minim=Min(0);
+//   for(int i=0;i<n;i++)
+//   {
+//     if(a[i]==minim)
+//     {
+//       Del(i,a,n);
+//     }
+//   }
+//   for(int i=0;i<n;i++)
+//   {
+//     cout<<a[i]<<" ";
+//   }
+//   return 0;
+// }
 #include<iostream>
-using namespace std;
-int a[100]={4,4,2,6,8};
-int n=5;
-int Min(int i)
-{
-  if(i<n)
-  {
-    if(a[i]<Min(i+1))
-    return a[i];
-    else 
-    return Min(i+1);
+using namespace std; 
+int Invers(int n, int invers=0){
+  if(n==0){
+    return invers;
   }
-  return 100;
+  else{
+    int cifra=n%10;
+    return Invers(n/10,invers*10+cifra);
+  }
 }
-void Del(int i, int a[], int &n)
-{
-  if(i==n-1)
-  {
-    n--;
+
+int Pal(int x){
+  if(x==Invers(x)){
+    return 1;
   }
-  if(i<n)
-  {
-a[i]=a[i+1];
-Del(i+1,a,n);
+  else{
+    return 0;
+  }
+}
+int Palindrome(int x, int reversed){
+  if(x<10){
+    if(reversed==-1){
+      return 1;
+    }
+    else{
+      return x==reversed;
+    }
+  }
+  else{
+    Palindrome(x/10, reversed*10+x%10);
+  }
+}
+bool isPalindrome(int n) {
+  if (n < 10) {
+      // Base case: one-digit number is always a palindrome
+      return true; // Any single digit number is a palindrome
+  } else if (n < 100) {
+      // Base case: two-digit number
+      int firstDigit = n / 10;
+      int lastDigit = n % 10;
+      return firstDigit == lastDigit;
+  } else if (n < 1000) {
+      // Base case: three-digit number
+      int firstDigit = n / 100;
+      int lastDigit = n % 10;
+      if (firstDigit != lastDigit) {
+          return false; // If first and last digits are not equal, it's not a palindrome
+      }
+      // Recursively check the middle digit (n % 100 removes first digit, / 10 removes last digit)
+      return isPalindrome(n % 100 / 10); 
+  }
+  return false; // Number greater than or equal to 1000 won't work here
+}
+int Search(int x, int t){
+  if(Pal(x)){
+    return x;
+  }
+  else{
+    x=Search(x+t,t);
+    return x;
   }
 }
 int main(){
-  int minim=Min(0);
-  for(int i=0;i<n;i++)
-  {
-    if(a[i]==minim)
-    {
-      Del(i,a,n);
-    }
-  }
-  for(int i=0;i<n;i++)
-  {
-    cout<<a[i]<<" ";
-  }
+  // int x[5]={101,245,5,19};
+  // int n=4;
+  // for(int i=0;i<n;i++){
+  //   x[i]=Search(x[i],-1);
+  // }
+  // for(int i=0;i<n;i++){
+  //   cout<<x[i]<<" ";
+  // }
+  cout<<Palindrome(11);
   return 0;
 }
