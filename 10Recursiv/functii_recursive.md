@@ -302,23 +302,44 @@ Cel mai aproiat palindrom (7.)
 ```cpp
 #include<iostream>
 using namespace std; 
-int Invers(int n, int &invers){
-  if(n==0){
-    return invers;
-  }
-  else{
-    int cifra=n%10;
-    return Invers(n/10,invers*10+cifra);
-  }
-}
-int Pal(int x){
-  if(x==Invers(x)){
-    return 1;
-  }
-  else{
+// int Invers(int n, int &invers){
+//   if(n==0){
+//     return invers;
+//   }
+//   else{
+//     int cifra=n%10;
+//     return Invers(n/10,invers*10+cifra);
+//   }
+// }
+int Pal(int n) {
+    if (n < 10) {
+       
+        return 1;
+    } else if (n < 100) {
+        
+        int firstDigit = n / 10;
+        int lastDigit = n % 10;
+        return firstDigit == lastDigit;
+    } else if (n < 1000) {
+        
+        int firstDigit = n / 100;
+        int lastDigit = n % 10;
+        if (firstDigit != lastDigit) {
+            return 0; 
+        }
+        
+        return Pal(n % 100 / 10); 
+    }
     return 0;
-  }
 }
+// int Pal(int x){
+//   if(x==Invers(x)){
+//     return 1;
+//   }
+//   else{
+//     return 0;
+//   }
+// }
 int Search(int x, int t){
   if(Pal(x)){
     return x;
