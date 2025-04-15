@@ -179,3 +179,10 @@ int main() {
   return 0;
 }
 ```
+5. Intr-o gradina zoologica reprezentata printr-o matrice A cu n linii si m coloane. Fiecare cusca se afla intr-o pozitie din matrice si contine x animale. De exemplu daca A[2][6] = 5 inseamna ca in cusca de pe linia 2 si coloana 6 se afla 5 animale. Sa se raspunda la Q intrebari de forma i1, j1, i2, j2 unde raspunsul va fi numarul de animale din dreptunghiul din matrice cu cordonatele coltului din stanga sus i1 si j1 si cordonatele coltului din dreapta jos i2 si j2, unde i reprezinta linia si j coloana.
+
+6. Se dă o matrice cu n linii şi m coloane şi elemente numere naturale. Să se ordoneze liniile matricei crescător după suma elementelor.
+
+7. Scrieţi un program care citeşte de la tastatură un număr natural nenul n cu exact 6 cifre şi construieşte un tablou bidimensional completat cu cifrele numărului citit.
+
+8. Se consideră o matrice pătratică cu n linii şi n coloane şi elemente numere naturale. Să se modifice matricea în felul următor: toate elementele de pe liniile care conţin valoare maximă din matrice vor fi mărite cu valoarea minimă din matrice.
