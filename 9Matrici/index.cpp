@@ -49,3 +49,29 @@
 //   return 0;
 // }
 //
+
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+    char a[100][100]={" "};
+    int n=50;
+    int m=100;
+    int pi=3.14;
+    double unitate=360/n;
+    for(int j=0;j<n;j++)
+    {
+         int deplasament=round(10*sin(j*unitate*pi/180));
+        a[n/2-deplasament][j]='*';
+    }
+    for(int i=0; i<n;i++){
+        for (int j=0;j<m;j++){
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}

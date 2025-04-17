@@ -381,3 +381,77 @@ int main(){
     return 0;
 }
 ```
+10. Sa se afiseze o matrice serpuita
+```cpp
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+//genereaza o matrice care are urmatoarea forma
+// 1 2 3 4
+// 8 7 6 5
+// 9 10 11 12
+// 16 15 14 13
+int main() {
+    int n=5,a[100][100],nr=1;
+    for(int i=0;i<n;i++)
+    {
+        if(i%2==0)
+        {
+            for(int j=0;j<n;j++)
+            {
+            a[i][j]=nr;
+            nr++;
+            }
+        }
+        else
+        {
+            for(int j=n-1;j>=0;j--)
+            {
+            a[i][j]=nr;
+            nr++;
+            }
+        }
+        
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    
+
+    return 0;
+}
+```
+11. Afisare sinus cu caractere/numere
+```cpp
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+    char a[100][100]={" "};
+    int n=20;
+    int m=20;
+    int pi=3.14;
+    double unitate=360/n;
+    for(int j=0;j<n;j++)
+    {
+         int deplasament=round(10*sin(j*unitate*pi/180));
+        a[n/2-deplasament][j]='*';
+    }
+    for(int i=0; i<n;i++){
+        for (int j=0;j<m;j++){
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+```
