@@ -134,6 +134,40 @@ Exemplu:
 Dim result As Double
 result = Square(4) ' rezultatul este 16
 ```
+### Functii predefinite 
+#### Functii matematice
+**1. Abs** - returneaza molulul unui numar 
+Exemplu:
+```vba 
+Abs(-1) '=>1
+```
+**2. Functii trigonometrice** 
+Exemplu:
+```vba 
+Cos(0)
+Sin(0)
+Tan(0)
+```
+**3. Log** - logaritm natural
+Exemplu:
+```vba 
+Log(0)
+```
+**4. Sqr** - radicalul de ordin 2 unui numar
+Exemplu:
+```vba 
+Sqr(4) '=> 2
+```
+Pentru radical de ordin superior se poate utiliza:  
+$\sqrt[n]x= x^{\frac{1}{n}}$
+```vba
+Dim result As Double
+result = x^1/n 'radical de ordin n din x
+```
+Pentru mai multe functii viziteaza: 
+https://learn.microsoft.com/en-us/office/vba/language/reference/functions-visual-basic-for-applications
+
+
 ## 6. Utilizarea foilor de calcul si a celulelor
 
 ### Referentierea celulelor
@@ -149,7 +183,6 @@ myValue = Range("A1").Value
 MsgBox myValue
 ```
 
-Using Loops to Process Data
 #### Utilizarea buclelor pentru prelucrarea datelor
 ```vba
 Dim i As Integer
