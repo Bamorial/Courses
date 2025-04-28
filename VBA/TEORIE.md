@@ -204,7 +204,24 @@ userInput = InputBox("Enter your name:")
 MsgBox "Hello, " & userInput
 ```
 
+## 8. With
+Cuvantul cheie **With** permite aplicarea mai multor optiuni asupra unui obiect.
 
+Fara with:
+```vba
+'utilizam un label 
+MyLabel.Height = 2000  ' optiunea 1
+MyLabel.Width = 2000   ' optiunea 2
+MyLabel.Caption = "This is MyLabel"   ' optiunea 3
+```
+Cu with:
+```vba
+With MyLabel 
+ .Height = 2000  ' optiunea 1
+ .Width = 2000   ' optiunea 2
+ .Caption = "This is MyLabel"   ' optiunea 3
+End With 
+```
 
 
 TODO:
