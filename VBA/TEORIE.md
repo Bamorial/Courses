@@ -222,16 +222,86 @@ With MyLabel
  .Caption = "This is MyLabel"   ' optiunea 3
 End With 
 ```
+## 9. Sortare
 
+Sortarea datelor in Excel VBA se poate face folosind metoda `Sort` a obiectului `Range`. Iata un exemplu de sortare a unei coloane:
 
-TODO:
-[ ] cifra din numar
-[ ] sa se afiseze nr cu m divizori si divizorii
-[ ] tablou unidim intre m n div cu 5
+```vba
+Sub SortData()
+    ...
+    Range("A1:A10").Sort Key1:=Range("A1"), Order1:=xlAscending, Header:=xlYes
+End Sub
+```
+Sortare pe mai multe chei:
+```vba
+Sub MultiKeySort()
 
-1 2 3 4 5 1 
-1 2 3 4 5 1 
-1 2 3 4 5 1 
-1 2 3 4 5 1 
-1 2 3 4 5 1 
-1 2 3 4 5 1 
+   ...
+    With Sort
+        .SetRange ws.Range("A1:B10") 'range-ul in care se afla datele
+        .SortFields.Add Key:=ws.Range("A1:A10"), Order:=xlAscending 'prima cheie de sortare
+        .SortFields.Add Key:=ws.Range("B1:B10"), Order:=xlDescending 'a doua cheie de sortare
+        .Header = xlYes 'precizam ca in range-ul dat se afla si capetele de tabel, pentru ca acestea sa nu fie incluse 
+        .Apply
+    End With
+End Sub
+
+```
+## 10. Filtrare
+Filtrarea datelor se poate realiza folosind metoda AutoFilter
+```vba
+
+Sub FilterData()
+   ... 
+    Range("A1:B10").AutoFilter Field:=1, Criteria1:=">50"
+End Sub
+```
+**Field** - numarul de ordine al coloanei dupa care filtram
+**Criteria1** - criterul dupa care filtram
+
+Filtrare avansata:
+```vba
+Sub MultiFieldFilterWith()
+    ...
+    With Range("A1:C10")
+        .AutoFilter Field:=1, Criteria1:=">50"
+        .AutoFilter Field:=2, Criteria1:="<=100"
+        .AutoFilter Field:=3, Criteria1:="TextExample"
+    End With
+End Sub
+```
+## 11. Validare
+Validarea datelor în Excel VBA se face folosind obiectul Validation.
+```vba
+Sub AddValidation()
+    ...
+    With ws.Range("A1").Validation
+        .Delete
+        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, Operator:=xlBetween, Formula1:="1", Formula2:="100"
+        .InputTitle = "Introduceți un număr"
+        .ErrorTitle = "Eroare"
+        .InputMessage = "Introduceți un număr între 1 și 100"
+        .ErrorMessage = "Numărul trebuie să fie între 1 și 100"
+    End With
+End Sub
+```
+## 12. Grafice
+Crearea graficelor în Excel VBA se face folosind obiectul Chart
+```vba
+
+Sub CreateChart()
+    Dim ws As Worksheet
+    Dim chartObj As ChartObject
+    
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    Set chartObj = ws.ChartObjects.Add(Left:=100, Width:=375, Top:=50, Height:=225)
+    
+    With chartObj.Chart
+        .SetSourceData Source:=ws.Range("A1:B10")
+        .ChartType = xlColumnClustered
+        .HasTitle = True
+        .ChartTitle.Text = "Exemplu de Grafic"
+    End With
+End Sub
+
+```
