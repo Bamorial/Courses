@@ -162,7 +162,7 @@ Pentru radical de ordin superior se poate utiliza:
 $\sqrt[n]x= x^{\frac{1}{n}}$
 ```vba
 Dim result As Double
-result = x^1/n 'radical de ordin n din x
+result = x^(1/n) 'radical de ordin n din x
 ```
 Pentru mai multe functii viziteaza: 
 https://learn.microsoft.com/en-us/office/vba/language/reference/functions-visual-basic-for-applications
