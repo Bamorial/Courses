@@ -184,12 +184,23 @@ MsgBox myValue
 ```
 
 #### Utilizarea buclelor pentru prelucrarea datelor
+
+**Exemplul 1**
 ```vba
 Dim i As Integer
 For i = 1 To 10
     Cells(i, 1).Value = i
 Next i
 ```
+
+**Exemplul 2**
+```vba
+Dim i As Integer
+For i = 1 To 10
+  Range("A1:A10").Cells(i).Value=i
+Next i
+```
+> in acest caz iteram prin fiecare celula din range-ul A1:A10 
 
 ## 7. Input-uri si mesaje
 ### Afisare mesaje
