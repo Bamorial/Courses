@@ -157,6 +157,16 @@ Log(0)
 Exemplu:
 ```vba 
 Sqr(4) '=> 2
+
+**5. Exp** - radicalul de ordin 2 unui numar
+**5. Chr** - radicalul de ordin 2 unui numar
+**5. Day/Year/Month** - radicalul de ordin 2 unui numar
+**5. Day/Year/Month** - radicalul de ordin 2 unui numar
+**5. String** - radicalul de ordin 2 unui numar
+**5. String** - radicalul de ordin 2 unui numar
+Exemplu:
+```vba 
+Sqr(4) '=> 2
 ```
 Pentru radical de ordin superior se poate utiliza:  
 $\sqrt[n]x= x^{\frac{1}{n}}$
