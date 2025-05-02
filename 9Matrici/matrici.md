@@ -321,3 +321,34 @@ int main() {
     return 0;
 }
 ```
+14. Sa se identifice elemntul de frecventa maxima
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    
+    int a[50][50]={{1,2,2},{3,2,6},{3,9,2}};
+    int n=3;
+    int v[10]={0};
+    int max=v[0];
+    int frmax=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            v[a[i][j]]++;
+        }
+    }
+    for(int i=0;i<10;i++)
+    {
+        if(v[i]>max)
+        {
+            max=v[i];
+            frmax=i;
+        }
+    }
+    cout<<frmax;
+
+    return 0;
+}
+```
