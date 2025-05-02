@@ -159,11 +159,9 @@ Exemplu:
 Sqr(4) '=> 2
 
 **5. Exp** - radicalul de ordin 2 unui numar
-**5. Chr** - radicalul de ordin 2 unui numar
-**5. Day/Year/Month** - radicalul de ordin 2 unui numar
-**5. Day/Year/Month** - radicalul de ordin 2 unui numar
-**5. String** - radicalul de ordin 2 unui numar
-**5. String** - radicalul de ordin 2 unui numar
+**6. Chr** - radicalul de ordin 2 unui numar
+**7. Day/Year/Month** - radicalul de ordin 2 unui numar
+**9. String** - radicalul de ordin 2 unui numar
 Exemplu:
 ```vba 
 Sqr(4) '=> 2
@@ -318,11 +316,18 @@ Sub CreateChart()
     Set chartObj = ws.ChartObjects.Add(Left:=100, Width:=375, Top:=50, Height:=225)
     
     With chartObj.Chart
-        .SetSourceData Source:=ws.Range("A1:B10")
-        .ChartType = xlColumnClustered
+        .SetSourceData Source:=ws.Range("A1:B10") 'aici modificam datele sursa 
+        .ChartType = xlColumnClustered 'aici modificam tipul graficului
         .HasTitle = True
         .ChartTitle.Text = "Exemplu de Grafic"
     End With
 End Sub
-
 ```
+### Tipuri de grafice
+| Tip grafic                     | Constanta VBA                | Descriere                                  |
+|-------------------------------|------------------------------|--------------------------------------------|
+| Coloane grupate               | xlColumnClustered            | Coloane una lângă alta                     |
+| Bare grupate                  | xlBarClustered               | Bare orizontale grupate                    |
+| Linie                         | xlLine                       | Linie simplă                               |
+| Plăcintă                      | xlPie                        | Grafic de tip pie                          |
+| Scatter simplu                | xlXYScatter                  | X-Y puncte                                 |

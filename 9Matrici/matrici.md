@@ -181,3 +181,143 @@ int main() {
 7. Scrieţi un program care citeşte de la tastatură un număr natural nenul n cu exact 6 cifre şi construieşte un tablou bidimensional completat cu cifrele numărului citit.
 
 8. Se consideră o matrice pătratică cu n linii şi n coloane şi elemente numere naturale. Să se modifice matricea în felul următor: toate elementele de pe liniile care conţin valoare maximă din matrice vor fi mărite cu valoarea minimă din matrice.
+
+9. Sa se scrie transpusa unei matrici 
+10. Sa se scrie o varianta optimizata a maximului de pe diagonala principala
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int a[50][50]={{1,2,3},{4,5,6},{7,8,9}};
+    int n=3;
+    int max=a[0][n-1];
+    for(int i=0;i<n;i++)
+    {
+        if(a[i][i]>max)
+        {
+            max=a[i][i];
+        }
+    }
+    cout<<max;
+    return 0;
+}
+```
+11. Sa se scrie o varianta optimizata a maximului de pe diagonala secundara 
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int a[50][50]={{1,2,3},{4,5,6},{7,8,9}};
+    int n=3;
+    int max=a[0][n-1];
+    for(int i=0;i<n;i++)
+    {
+        if(a[i][n-1-i]>max)
+        {
+            max=a[i][n-1-i];
+        }
+    }
+    cout<<max;
+    return 0;
+}
+```
+12. Sa se interschimbe linia care contine valoarea maxima cu linia care contine valoarea minima 
+```cpp
+#include <iostream>
+using namespace std;
+//interschimbam linia cu max si linia cu min
+int main() {
+    int a[50][50]={{1,2,3},{4,5,6},{7,8,9}};
+    int n=3;
+    int lmin=0,lmax=0;
+    int max=a[0][0];
+    int min=a[0][0];
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+        if(a[i][j]>max)
+        {
+            max=a[i][j];
+            lmax=i;
+        }
+        if(a[i][j]<min)
+        {
+            min=a[i][j];
+            lmin=i;
+        }
+        }
+    }
+    for(int k=0;k<n;k++)
+    {
+        int aux=a[lmin][k];
+        a[lmin][k]=a[lmax][k];
+        a[lmax][k]=aux;
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+
+    return 0;
+}
+```
+13. Sa se identifice linia cu diferenta constanta dintre elemente si sa se elimine
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int a[50][50]={{1,2,3},{4,7,6},{7,11,9}};
+    int n=3,m=3;
+    int dif=0;
+    int lin=0;
+    for(int i=0;i<n;i++)
+    {
+        bool difc=true;
+        int dif1=a[i][0]-a[i][1];
+        for(int j=0;j<m-1;j++)
+        {
+            dif=a[i][j]-a[i][j+1];
+            if(dif1!=dif)
+            {
+               difc=false;
+            }
+            
+        }
+        if(difc)
+        {
+            lin=i;
+        }
+    }
+    for(int i=lin;i<n-1;i++)
+    {
+        for(int k=i+1;k<n;k++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                int aux=a[i][j];
+                a[i][j]=a[k][j];
+                a[i][k]=aux;
+            }
+        }
+        n--;
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+  
+
+    return 0;
+}
+```
