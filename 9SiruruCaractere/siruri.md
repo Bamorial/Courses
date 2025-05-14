@@ -57,9 +57,24 @@ islower(char ch)
 ```cpp
 toupper(char c)
 ```
+- echivalent cu
+```cpp
+char('a'-32) //'A'
+```
+
+
 **tolower** - Transforma in litera mica 
 ```cpp
 tolower(char c)
+```
+- echivalent cu
+```cpp
+char('A'+32) //'a'
+```
+
+**casting** - transforma un int in char
+```cpp
+char(int i)=> char(65)=>'A'
 ```
 ## Functii pentru siruri de caractere
 **strlen** - returneaza lungimea sirului de caractere
@@ -109,5 +124,188 @@ while(p != NULL)
 {
     cout << p << endl;
     p = strtok(NULL , sep);
+}
+```
+# Probleme
+1. Sa se afiseze tabela ASCII
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+
+
+using namespace std;
+
+int main() {
+    for(int i=0;i<256;i++)
+    {
+        cout<<i<<" "<<char(i)<<endl;
+    }
+}
+```
+2. Sa se determine daca un sir de caractere e palindrom
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int main() {
+  char cuv[]="ana";
+  char inv[100];
+  int j=0;
+  for(int i=strlen(cuv)-1;i>=0;i--)
+  {
+    inv[j]=cuv[i];
+    j++;
+  }
+  inv[j]='\0';
+cout<<inv<<" ";
+if(strcmp(inv,cuv)==0)
+{
+    cout<<"este palindrom";
+}
+else{
+    cout<<"nu este palindrom";
+}
+}
+```
+3. Se dau mai multe propozitii. Dupa fiecare punct, urmatorul caracter sa se scrie cu litera mare
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int main() {
+    char sir[]="afara este soare si frumos.azi e luni.merg la scoala";
+    for(int i=0;i<strlen(sir);i++)
+    {
+        if(sir[i]=='.')
+        {
+            sir[i+1]=toupper(sir[i+1]);
+        }
+    }
+   cout<<sir;
+}
+```
+4. Sa se scrie cu litera mare fiecare cuvant din propozitie
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int main() {
+    char sir[]="afara este soare si frumos azi e luni merg la scoala";
+  for(int i=0;i<strlen(sir);i++)
+  {
+    if(sir[i]==' ')
+    {
+        sir[i+1]=toupper(sir[i+1]);
+        //sir[i+1]=sir[i+1]-32;
+    }
+  }
+sir[0]=toupper(sir[0]);
+//sir[0]=sir[0]-32;
+
+  cout<<sir;
+}
+```
+5. Sa se scrie toate prefixele unui cuvant dat. Ex: bac => b , ba, bac
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int main() {
+    char sir[]="bac";
+for(int i=0;i<strlen(sir);i++)
+{
+    for(int j=0;j<=i;j++)
+    {
+        cout<<sir[j];
+    }
+    cout<<endl;
+}
+}
+```
+
+6. Sa se elimine toate vocalele din sir. sir: Ana are mere => n r mr
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int esteVocala(char i){
+i=tolower(i);
+if(i=='a' || i=='e' || i=='o' || i=='u' || i=='i')
+{
+    return 1;
+}
+else
+return 0;
+}
+int main() {
+    char sir[]="ana are mere";
+    char sir1[100];
+    int j=0;
+for(int i=0;i<strlen(sir);i++)
+{
+    if(!esteVocala(sir[i]))
+    {
+sir1[j]=sir[i];
+j++;
+    }
+}
+sir1[j]='\0';
+cout<<sir1;
+}
+```
+7. Gasiti al catelea cuvant este cel de lungime maxima
+ex: ana are mere, output: 3
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int esteVocala(char i){
+i=tolower(i);
+if(i=='a' || i=='e' || i=='o' || i=='u' || i=='i')
+{
+    return 1;
+}
+else
+return 0;
+}
+int Maxim(int a[], int n){
+    int max=a[0];
+    int poz=0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>max)
+        {
+        max=a[i];
+        poz=i;
+        }
+    }
+    return poz;
+}
+int main() {
+    char sir[]="afara este soare si poimaine este joi";
+    int ct=0;
+    int cuv[100];
+    int j=0;
+    for(int i=0;i<strlen(sir);i++)
+    {
+if(sir[i]!=' ')
+ct++;
+else
+{
+cuv[j]=ct;
+j++;
+ct=0;
+}
+    }
+    cuv[j]=ct;
+    j++;
+cout<<Maxim(cuv,j)+1;
 }
 ```

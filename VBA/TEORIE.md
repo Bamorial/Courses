@@ -11,6 +11,11 @@ Dim myNumber As Integer
 Dim myText As String
 Dim myValue As Double
 Dim myBoolean As Boolean
+
+
+range().cells(i)=array(i)
+range().cells(i)=array(i)
+range().cells(i)=array(i)
 ```
 
 ### Tipuri de date comune
@@ -331,3 +336,7 @@ End Sub
 | Linie                         | xlLine                       | Linie simplă                               |
 | Plăcintă                      | xlPie                        | Grafic de tip pie                          |
 | Scatter simplu                | xlXYScatter                  | X-Y puncte                                 |
+
+TO DO:
+[ ] Scrie array-uri
+[ ] Scrie algoritmii elementari

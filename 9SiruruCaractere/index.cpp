@@ -3,11 +3,67 @@
 #include <iostream>
 #include <math.h>
 #include <cstring>
-
-
 using namespace std;
-
+int esteVocala(char i){
+i=tolower(i);
+if(i=='a' || i=='e' || i=='o' || i=='u' || i=='i')
+{
+    return 1;
+}
+else
+return 0;
+}
+int Maxim(int a[], int n){
+    int max=a[0];
+    int poz=0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>max)
+        {
+        max=a[i];
+        poz=i;
+        }
+    }
+    return poz;
+}
 int main() {
+    char sir[]="afara este soare si poimaine este joi";
+    int ct=0;
+    int cuv[100];
+    int j=0;
+    for(int i=0;i<strlen(sir);i++)
+    {
+if(sir[i]!=' ')
+ct++;
+else
+{
+cuv[j]=ct;
+j++;
+ct=0;
+}
+    }
+    cuv[j]=ct;
+    j++;
+cout<<Maxim(cuv,j)+1;
+
+    
+//   char cuv[]="ana";
+//   char inv[100];
+//   int j=0;
+//   for(int i=strlen(cuv)-1;i>=0;i--)
+//   {
+//     inv[j]=cuv[i];
+//     j++;
+//   }
+//   inv[j]='\0';
+// cout<<inv;
+// if(strcmp(inv,cuv)==0)
+// {
+//     cout<<"este palindrom";
+// }
+// else{
+//     cout<<"nu este palindrom";
+// }
     // char a[200][200]={" "};
     // int n=50;
     // int m=50;
@@ -107,17 +163,17 @@ int main() {
 // cout<<ct;
 // sa se afiseze cuvintele de lungime de pare
 
-char sir[]="buna seara";
-char sep[]=" ";
-char * p=strtok(sir,sep);
-while(p!=NULL)
-{
-    if(strlen(p)%2==0)
-    {
-        cout<<p<<endl;
-    }
-    p=strtok(NULL,sep);
-}
+// char sir[]="buna seara";
+// char sep[]=" ";
+// char * p=strtok(sir,sep);
+// while(p!=NULL)
+// {
+//     if(strlen(p)%2==0)
+//     {
+//         cout<<p<<endl;
+//     }
+//     p=strtok(NULL,sep);
+// }
 
 
 }
