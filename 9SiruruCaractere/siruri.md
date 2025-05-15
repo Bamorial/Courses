@@ -309,3 +309,134 @@ ct=0;
 cout<<Maxim(cuv,j)+1;
 }
 ```
+
+8. Cifrul lui Cezar. a -> a+offset
+
+9.Într-un text, de cel mult 100 de caractere, cuvintele sunt formate din litere ale alfabetului englez și sunt separate prin spații. Scrieți un program C/C++ care citește de la tastatură un text de tipul precizat mai sus și afișează pe ecran mesajul DA și un număr natural n, separate printr-un spațiu, dacă toate cuvintele din text au câte n litere, sau mesajul NU în cazul în care nu toate cuvintele au același număr de litere.
+```cpp
+int main()
+{
+char sir[]="ana are mere";
+int ct=0;
+int a[100];
+int j=0;
+bool suntEgale=true;
+for(int i=0;i<strlen(sir);i++)
+{
+    if(sir[i]!=' ')
+    {
+        ct++;
+    }
+    else
+    {
+        a[j]=ct;
+        j++;
+        ct=0;
+    }
+
+}
+a[j]=ct;
+for(int i=0;i<=j;i++)
+{
+    if(a[0]!=a[i])
+    suntEgale=false;
+}
+if(suntEgale)
+{
+    cout<<"da";
+
+}
+else
+{
+    cout<<"nu";
+}
+}
+```
+10.Se dă un șir de caractere. Să se determine câte vocale din șir sunt cuprinse între două consoane.
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int esteVocala(char i)
+{
+    i = tolower(i);
+    if (i == 'a' || i == 'e' || i == 'o' || i == 'u' || i == 'i')
+    {
+        return 1;
+    }
+    else
+        return 0;
+}
+
+int main()
+{
+char sir[]="abecedar";
+int ct=0;
+for(int i=1;i<strlen(sir)-1;i++)
+{
+    
+    if(esteVocala(sir[i]) && !esteVocala(sir[i-1]) && !esteVocala(sir[i+1]))
+    {
+ct++;
+    }
+    
+}
+cout<<ct;
+}
+```
+
+11.Să se înlocuiasca cu cifra 5 ultima literă a fiecărui cuvânt 
+```cpp
+int main()
+{
+char sir[]="ana are";
+for(int i=0;i<strlen(sir);i++)
+{
+    if(sir[i]==' ')
+    {
+        sir[i-1]='5';
+    }
+
+}
+sir[strlen(sir)-1]='5';
+cout<<sir;
+}
+```
+12.Limba păsărească este foarte simplă; și asemănătoare cu limba română! Un text scris în română se traduce în păsărește astfel: după fiecare vocală se inserează litera p și vocala respectivă.
+Se dă o propoziție scrisă în limba română. Să se traducă în păsărească.
+```cpp
+#include <iostream>
+#include <math.h>
+#include <cstring>
+using namespace std;
+int esteVocala(char i)
+{
+    i = tolower(i);
+    if (i == 'a' || i == 'e' || i == 'o' || i == 'u' || i == 'i')
+    {
+        return 1;
+    }
+    else
+        return 0;
+}
+int main()
+{
+char sir[]="acest text este in romana";
+char sirp[100];
+int j=0;
+for(int i=0;i<strlen(sir);i++)
+{
+if(esteVocala(sir[i]))
+{
+    sirp[j++]=sir[i];
+    sirp[j++]='p';
+    sirp[j++]=sir[i];
+}
+else
+sirp[j++]=sir[i];
+}
+sirp[j]='\0';
+cout<<sirp;
+}
+```
