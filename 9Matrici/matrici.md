@@ -352,3 +352,7 @@ int main() {
     return 0;
 }
 ```
+9. Sa se determine varfurile de pe oricare linie
+10. Gigel are o livadă împărțită în n*m sectoare, dispuse pe n linii, numeroate de la 1 la n și m coloane, numerotate de la 1 la m. În fiecare sector se află un cireș, care conține o cantitate de cireșe cunoscută. Gigel va culege toate cireșele din cireșii dispuși într-o zonă dreptunghiulară din livadă. El poate să aleagă între k zone și dorește să culeagă cât mai multe cireșe.
+11. Se dă o matrice cu n linii și m coloane și elemente numere naturale. Să se determine câte dintre elementele situate pe coloane cu indici impari sunt prime
+12. Într-o matrice în care elementele sunt aranjate crescător pe anumite linii şi descrescător pe altele, trebuie găsită linia şi coloana pe care se află un anumit element.
