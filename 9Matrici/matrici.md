@@ -352,7 +352,135 @@ int main() {
     return 0;
 }
 ```
-9. Sa se determine varfurile de pe oricare linie
-10. Gigel are o livadă împărțită în n*m sectoare, dispuse pe n linii, numeroate de la 1 la n și m coloane, numerotate de la 1 la m. În fiecare sector se află un cireș, care conține o cantitate de cireșe cunoscută. Gigel va culege toate cireșele din cireșii dispuși într-o zonă dreptunghiulară din livadă. El poate să aleagă între k zone și dorește să culeagă cât mai multe cireșe.
+9. Sa se determine varfurile de pe oricare linie. Programul primeste o valoare l, reprezentad linia pe care se face cautarea si returneaza o valoare v cre indica pozitia varfului. Un varf este o valoare maxima de pe linie, precedata de valori crescatoare si urmata de valori descrescatoare.
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    //Sa se determine varfurile de pe oricare linie. Programul primeste o valoare l, reprezentad linia pe care se face cautarea si returneaza o valoare v cre indica pozitia varfului. Un varf este o valoare maxima de pe linie, precedata de valori crescatoare si urmata de valori descrescatoare.
+    int a[50][70]={{1,2,6,7,2},{3,1,4,5,6},{2,3,6,5,2},{8,4,7,1,2},{2,4,6,5,2},{1,5,2,6,1}};
+    int n=5,m=6;
+    int l=3;
+    int max=a[l][0];
+    bool esteVarf=true;
+    int poz=0;
+    for(int j=0;j<m;j++)
+    {
+        if(a[l][j]>max)
+        {
+            max=a[l][j];
+            poz=j;
+        }
+    }
+    for(int j=0;j<poz;j++)
+    {
+        if(a[l][j]>a[l][j+1])
+        {
+            esteVarf=false;
+        }
+    }
+    for(int j=poz;j<m;j++)
+    {
+        if(a[l][j]<a[l][j+1])
+        {
+            esteVarf=false;
+        }
+    }
+    if(esteVarf)
+    {
+        cout<<poz;
+    }
+    else
+    {
+        cout<<"0";
+    }
+   
+
+    return 0;
+}
+```
+10. Gigel are o livadă împărțită în n*m sectoare, dispuse pe n linii, numeroate de la 1 la n și m coloane, numerotate de la 1 la m. În fiecare asector se află un cireș, care conține o cantitate de cireșe cunoscută. Gigel va culege toate cireșele din cireșii dispuși într-o zonă dreptunghiulară din livadă. El poate să aleagă între k zone și dorește să culeagă cât mai multe cireșe.
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+
+
+    int a[50][70]={{1,2,6,7,2},{3,1,4,5,6},{2,3,6,5,2},{8,4,7,1,2},{2,4,6,5,2},{1,5,2,22,1}};
+    int n=6,m=5;
+    int max=0;
+    int w=3,h=2;
+    int s=0;
+    int zonaX=0,zonaY=0;
+    for(int i=0;i<=n-h;i++)
+    {
+        for(int j=0;j<=m-w;j++)
+        {
+            s=0;
+            for(int k=i;k<i+h;k++)
+            {
+                for(int l=j;l<j+w;l++)
+                {
+                    s=s+a[k][l];
+                }
+            }
+            if(s>max)
+            {
+                max=s;
+                zonaX=j;
+                zonaY=i;
+            }
+        }
+
+    }
+    cout<<max<<endl;
+    cout<<zonaX<<" "<<zonaY<<endl;
+    for(int i=zonaY;i<zonaY+h;i++)
+    {
+        for(int j=zonaX;j<zonaX+w;j++)
+        {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    return 0;
+}
+```
 11. Se dă o matrice cu n linii și m coloane și elemente numere naturale. Să se determine câte dintre elementele situate pe coloane cu indici impari sunt prime
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+
+
+    int a[50][70]={{1,2,6,7,2},{3,1,4,5,6},{2,3,6,5,2},{8,4,7,1,2},{2,4,6,5,2},{1,5,2,23,1}};
+    int n=6,m=5;
+    bool prim=true;
+    int contor=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=1;j<m;j=j+2)
+        {
+            prim=true;
+            for(int d=2;d<=a[i][j]/2;d++)
+            {
+                if(a[i][j]%d==0)
+                {
+                    prim=false;
+                }
+                
+            }
+            if(prim)
+            {
+                contor++;
+            }
+            
+        }
+    }
+    cout<<contor;
+    
+    return 0;
+}
+```
 12. Într-o matrice în care elementele sunt aranjate crescător pe anumite linii şi descrescător pe altele, trebuie găsită linia şi coloana pe care se află un anumit element.
