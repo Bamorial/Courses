@@ -476,3 +476,29 @@ sirp[j]='\0';
 cout<<sirp;
 }
 ```
+13. Se citeste un cuvant de forma: cifra care indica numarul de aparitii urmata de litera aferenta. Sa se decodeze cuvantul citit. Ex: 1c1o1p3i -> copiii
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+int main() {
+    char cuv[]="1a2c1e1s";
+    char rez[100];
+    int ct=0;
+    for(int i=0;i<strlen(cuv);i++)
+    {
+        if(cuv[i]>='0' && cuv[i]<='9')
+        {
+            ct=cuv[i]-'0';
+        }
+        else
+        {
+            for(int j=0;j<ct;j++)
+            {
+                cout<<cuv[i];
+            }
+        }
+    }
+    return 0;
+}
+```
