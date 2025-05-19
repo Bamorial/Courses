@@ -311,6 +311,42 @@ cout<<Maxim(cuv,j)+1;
 ```
 
 8. Cifrul lui Cezar. a -> a+offset
+```cpp
+void codare(char v[],int k)
+{
+    k=k%('z'-'a');
+    for(int i=0;i<strlen(v);i++)
+    {
+        if(isalpha(v[i]))
+        {
+             v[i]=v[i]+k;
+             if(v[i]>'z')
+                {
+                int dif=v[i]-'z'-1;
+                v[i]='a'+dif;
+                 }
+        }
+    }
+}
+void decodare(char v[],int k)
+{
+    
+    k=k%('z'-'a');
+    for(int i=0;i<strlen(v);i++)
+    {
+        if(isalpha(v[i]))
+         {   
+             v[i]=tolower(v[i]);
+            v[i]=v[i]-k;
+            if(v[i]<'a')
+            {
+                int dif='a'-v[i]-1;
+                v[i]='z'-dif;
+            }
+         }
+    }
+}
+```
 
 9.Într-un text, de cel mult 100 de caractere, cuvintele sunt formate din litere ale alfabetului englez și sunt separate prin spații. Scrieți un program C/C++ care citește de la tastatură un text de tipul precizat mai sus și afișează pe ecran mesajul DA și un număr natural n, separate printr-un spațiu, dacă toate cuvintele din text au câte n litere, sau mesajul NU în cazul în care nu toate cuvintele au același număr de litere.
 ```cpp
