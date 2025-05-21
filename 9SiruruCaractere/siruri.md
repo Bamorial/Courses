@@ -502,3 +502,119 @@ int main() {
     return 0;
 }
 ```
+14. Se citeste de la tastaura un vers al unei poezii si o silaba. Sa se determine de cate ori apare silaba respectiva in vers. 
+Ex: Un curcubeu multicolor, silaba: cu => 2
+* Varianta cu funtii 
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+int main() {
+    char vers[]="ana are are are mere";
+    char silaba[]="are";
+    int ct=0;
+    while(strstr(vers, silaba)!=NULL){
+        int poz=strstr(vers, silaba)-vers;
+        int len=strlen(silaba);
+        strcpy(vers+poz,vers+poz+len);
+        cout<<vers<<endl;
+        ct++;
+    }
+    cout<<endl;
+    cout<<ct;
+    
+    return 0;
+}
+```
+* Varianta fara functii
+```cpp
+#include <cstring>
+#include <iostream>
+using namespace std;
+int main() {
+    char vers[]="Un curcubeu multiculor";
+    char silaba[]="cu";
+    int ct=0;
+    for(int i=0;i<strlen(vers);i++)
+    {
+        if(vers[i]==silaba[0])
+        {
+            bool suntEgale=true;
+            for(int j=1;j<strlen(silaba);j++)
+            {
+                if(vers[i+j]!=silaba[j])
+                {
+                    suntEgale=false;
+                }
+            }
+            if(suntEgale)
+            ct++;
+        }
+    }
+    cout<<ct;
+    return 0;
+}
+```
+15. Sa se realizeze operatiunea de find and replace asupra unui sir dat cu un subsir cautat si un subsir de inlocuit: ex: Ana are mere are pere, subsir de cautat: are, subsir de inlocuit era. => Ana era mere era pere.
+```cpp
+#include <cstring>
+#include <iostream>
+using namespace std;
+//15. Sa se realizeze operatiunea de find and replace asupra unui sir dat cu un subsir cautat si un subsir de inlocuit, de dimiensiuni egale: ex: Ana are mere are pere, subsir de cautat: are, subsir de inlocuit era. => Ana era mere era pere.
+
+
+int main() {
+    char sir[]="ana are mere are pere";
+    char find[]="are";
+    char replace[]="era";
+    
+    while(strstr(sir,find)!=NULL)
+    {
+        int poz=strstr(sir,find)-sir;
+        int len=strlen(find);
+        for(int i=0;i<len;i++)
+        {
+            sir[poz+i]=replace[i];
+        }
+    }
+    cout<<sir;
+    return 0;
+}
+```
+16. Sa se gaseasca toate pozitiile la care se gaseste un caracter dat: ex: ana are mere, caracterul:'a' -> 0,2,4
+```cpp
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+int main() {
+    char sir[]="ana are mere are pere";
+    char cautat='a';
+    int ct=0;
+    while(strchr(sir,cautat)!=NULL)
+    {
+        int poz=strchr(sir,cautat)-sir;
+        strcpy(sir+poz,sir+poz+1);
+        cout<<poz+ct<<endl;
+        ct++;
+    }
+    return 0;
+}
+```
+17. Sa se elimine un sir dat intr-o propozitie: ex: Azi este vineri sir dat: este => Azi vineri.
+```cpp
+#include <cstring>
+#include <iostream>
+using namespace std;
+int main() {
+    char sir[]="azi este vineri";
+    char cautat[]="este";
+    while(strstr(sir,cautat)!=NULL)
+    {
+        int poz=strstr(sir,cautat)-sir;
+        strcpy(sir+poz,sir+poz+strlen(cautat)+1);
+    }
+    cout<<sir;
+    return 0;
+}
+```

@@ -59,11 +59,8 @@ for(int i=0;i<strlen(sir);i++)
 if(esteVocala(sir[i]))
 {
     sirp[j++]=sir[i];
-
     sirp[j++]='p';
-
     sirp[j++]=sir[i];
-
 }
 else
 sirp[j++]=sir[i];
