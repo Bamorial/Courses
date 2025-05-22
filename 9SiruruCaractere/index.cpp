@@ -49,24 +49,32 @@ void decriptare(char sir1[], int offset)
 }
 int main()
 {
-char sir[]="acest text este in romana";
-char sirp[100];
-int j=0;
-for(int i=0;i<strlen(sir);i++)
-{
+// char sir[]="acest text este in romana";
+// char sirp[100];
+// int j=0;
+// for(int i=0;i<strlen(sir);i++)
+// {
 
 
-if(esteVocala(sir[i]))
-{
-    sirp[j++]=sir[i];
-    sirp[j++]='p';
-    sirp[j++]=sir[i];
-}
-else
-sirp[j++]=sir[i];
-}
-sirp[j]='\0';
-cout<<sirp;
+// if(esteVocala(sir[i]))
+// {
+//     sirp[j++]=sir[i];
+//     sirp[j++]='p';
+//     sirp[j++]=sir[i];
+// }
+// else
+// sirp[j++]=sir[i];
+// }
+// sirp[j]='\0';
+// cout<<sirp;
+    char cuvant[]="mamaie";
+    char prima=cuvant[0];
+    while(strchr(cuvant,prima)!=NULL)
+    {
+        int poz=strchr(cuvant,prima)-cuvant;
+        strcpy(cuvant+poz,cuvant+poz+1);
+    }
+    cout<<cuvant;
     // char sir[] = "ursul cand doarme face zzzzzzz";
     // criptare(sir, 11);
     // cout << sir;

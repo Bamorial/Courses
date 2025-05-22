@@ -618,3 +618,148 @@ int main() {
     return 0;
 }
 ```
+18. Se considera un sir de n cuvinte. Se doreste afisarea lor pe verticala astfel:
+- pe fiecare coloana se afla cate un cuvant
+- pe ultima linie se afla prima litera a fiecarui cuvant
+- pe prima linie se afla ultimele litere ale celor mai lungi cuvinte
+```cpp
+#include<cstring>
+#include <iostream>
+using namespace std;
+int main() {
+    
+    char sir[100][100]={"eu", "masa","noi", "vine"};
+    int m=4;
+    int max=0;
+    int difvect[100];
+    char out[100][100];
+    for(int k=0;k<m;k++)
+    {
+        if(max<strlen(sir[k]))
+        max=strlen(sir[k]);
+    }
+    
+    
+    int n=max;
+    
+    for(int i=0;i<m;i++)
+    {
+        if(strlen(sir[i])<=n)
+        {
+            int dif=m-strlen(sir[i]);
+            
+            difvect[i]=dif;
+           
+        }
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(difvect[j]!=0)
+            {
+                out[i][j]=' ';
+                difvect[j]--;
+            }
+            else
+            {
+            out[i][j]=sir[j][n-1-i];
+            }
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cout<<out[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    return 0;
+}
+```
+19. Se considera un cuvant format din litere mici si mari. Realizati un program care permite stergerea tuturor aparitiilor primel litere
+* fara functii
+```cpp
+#include<cstring>
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    
+    char cuvant[]="mamaie";
+    char prima=cuvant[0];
+    char output[100];
+    int j=0;
+    for(int i=0;i<strlen(cuvant);i++){
+        if(cuvant[i]!=prima){
+            output[j]=cuvant[i];
+            j++;
+        }
+    }
+    output[j]='\0';
+    cout<<output;
+    return 0;
+}
+```
+*cu functii
+```cpp
+#include<cstring>
+#include <iostream>
+using namespace std;
+int main() {
+    
+    char cuvant[]="mamaie";
+    char prima=cuvant[0];
+    while(strchr(cuvant,prima)!=NULL)
+    {
+        int poz=strchr(cuvant,prima)-cuvant;
+        strcpy(cuvant+poz,cuvant+poz+1);
+    }
+    cout<<cuvant;
+    return 0;
+}
+```
+20. Se considera un cuvant format din litere mici si mari. Realizati un program care permite stergerea succesiva a primei si ultimei litere a cuvantului. ex: mare -> ar -> 
+```cpp
+#include<cstring>
+#include <iostream>
+using namespace std;
+int main() {
+    char cuvant[]="mareaafe";
+    while(strlen(cuvant)>1)
+    {
+        strcpy(cuvant,cuvant+1);
+        cuvant[strlen(cuvant)-1]='\0';
+        cout<<cuvant<<endl;
+    }
+
+    return 0;
+}
+```
+21. Sa se scrie un program care transforma literele mari ale unui cuvant in litere mici si literele mici in litere mari
+```cpp
+#include<cstring>
+#include <iostream>
+using namespace std;
+int main() {
+    char cuvant[]="tAsTaTUra";
+ for(int i=0;i<strlen(cuvant);i++)
+ {
+     if(cuvant[i]>='a' && cuvant[i]<='z')
+     {
+         cuvant[i]=cuvant[i]-32;
+     }
+     else
+     if(cuvant[i]>='A' && cuvant[i]<='Z')
+     {
+         cuvant[i]=tolower(cuvant[i]);
+     }
+ }
+ cout<<cuvant;
+    return 0;
+}
+```
